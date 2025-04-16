@@ -1,19 +1,17 @@
 'use client';
 
 import React, { FC, useState } from 'react';
-import 'flag-icons/css/flag-icons.min.css';
 import { useRouter } from 'next/navigation';
 import { Menu } from 'lucide-react';
-import Image from 'next/image';
-
+ 
 interface UnloggedNavProps {
   section: string;
-  setSection: React.Dispatch<React.SetStateAction<string>>;
+  menuOpen: boolean;
+  setMenuOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const UnloggedNav: FC<UnloggedNavProps> = ({ section }) => {
+const UnloggedNav: FC<UnloggedNavProps> = ({ section, menuOpen, setMenuOpen}) => {
   const router = useRouter();
-  const [menuOpen, setMenuOpen] = useState(false);
 
   const handleRedirection = (redirection: string) => {
     router.push(redirection);
@@ -21,14 +19,14 @@ const UnloggedNav: FC<UnloggedNavProps> = ({ section }) => {
   };
 
   return (
-    <nav className="flex flex-row w-full text-white px-5 py-6 sm:py-1 justify-between items-center bg-gray-950 bg-opacity-80">
+    <nav className="flex flex-row w-full text-white px-5 py-6 sm:py-1 justify-between items-center  bg-cyan-900">
       <div
         className="flex flex-row  text-xl md:text-4xl  cursor-pointer items-center"
         onClick={() => handleRedirection('/')}
         style={{ transitionDuration: '3000ms' }}
       >
-         <p className='px-3 font-bold bg-red-300 text-white'>BUILD</p>
-         <p className='text-black'>informer</p>
+         <p className='px-3 font-bold bg-white text-cyan-900 rounded-sm'>BUILD</p>
+         <p className='text-white ml-1'>informer</p>
       </div>
 
       <button
@@ -44,7 +42,7 @@ const UnloggedNav: FC<UnloggedNavProps> = ({ section }) => {
       >
         <div
           className={`pt-6 pb-5 px-3 text-center cursor-pointer ${section === 'news' ? 'text-white' : 'opacity-50 hover:opacity-100'}`}
-          onClick={() => handleRedirection('/news')}
+          onClick={() => handleRedirection('/')}
           style={{ transitionDuration: '1200ms' }}
         >
           <p>News</p>
