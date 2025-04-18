@@ -63,11 +63,18 @@ const UnloggedNav: FC<UnloggedNavProps> = ({ section, menuOpen, setMenuOpen}) =>
           <p>Network</p>
         </div>
         <div
-          className={`pt-6 pb-5 px-3 text-center cursor-pointer ${section === 'informer' ? 'text-white' : 'opacity-50 hover:opacity-100'}`}
-          onClick={() => handleRedirection('/informer')}
+          className={`pt-6 pb-5 px-3 text-center cursor-pointer ${section === 'contact' ? 'text-white' : 'opacity-50 hover:opacity-100'}`}
+          onClick={() => handleRedirection('/contact')}
           style={{ transitionDuration: '1200ms' }}
         >
-          <p>Informer</p>
+          <p>Contact us</p>
+        </div>
+        <div
+          className={`mt-6 bg-white mb-5 py-1 px-3 text-center cursor-pointer rounded text-sm text-cyan-900  ${section === 'access' ? 'opacity-100 font-bold ' : 'opacity-80  hover:opacity-100'}` }
+          onClick={() => handleRedirection('/access')}
+          style={{ transitionDuration: '1200ms' }}
+        >
+          <p>Access</p>
         </div>
 
        

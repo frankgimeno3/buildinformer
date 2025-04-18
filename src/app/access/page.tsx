@@ -2,12 +2,12 @@
 import React, { FC, useState } from 'react';
 import UnloggedNav from '../components/UnloggedNav';
 
-interface InformerProps {
+interface AccessProps {
   
 }
 
-const Informer: FC<InformerProps> = ({ }) => {
-    const [section] = useState("informer")
+const Access: FC<AccessProps> = ({ }) => {
+    const [section] = useState("Access")
     const [menuOpen, setMenuOpen] = useState(false)
     const handleCloseMenu = ()=>{
         setMenuOpen(false)
@@ -19,10 +19,13 @@ const Informer: FC<InformerProps> = ({ }) => {
         <UnloggedNav section={section} menuOpen={menuOpen} setMenuOpen={setMenuOpen}/>
         </div>
         <div className="flex flex-col min-h-screen" onClick={()=>{handleCloseMenu()}}>
-         <p>Informer</p>
+         <p>Access</p>
+         <p>Log in</p>
+         <p>Sign Up</p>
+         <p>Who are we?</p>
         </div>
       </div>
     );
 };
 
-export default Informer;
+export default Access;
