@@ -1,7 +1,7 @@
 "use client"
 import { useState } from "react";
 import UnloggedNav from "./components/UnloggedNav";
-import MainFeed from "./components/news/MainFeed";
+import MainFeed from "./components/news/mainfeed/MainFeed";
 import RightCol from "./components/news/RightCol";
 import Topbanner from "./components/news/TopBanner";
 
