@@ -2,6 +2,8 @@
 import React, { FC, useState } from 'react';
 import UnloggedNav from '../components/UnloggedNav';
 import Topbanner from '../components/news/TopBanner';
+import DirectoryLeftMenu from './directoryComponents/DirectoryLeftMenu';
+import DirectoryContents from './directoryComponents/DirectoryContents';
 
 interface DirectoryProps {
   
@@ -20,8 +22,9 @@ const Directory: FC<DirectoryProps> = ({ }) => {
         <UnloggedNav section={section} menuOpen={menuOpen} setMenuOpen={setMenuOpen}/>
       </div>
       <Topbanner/>
-        <div className="flex flex-col h-full min-h-screen min-h-screen" onClick={()=>{handleCloseMenu()}}>
-         <p>Directory</p>
+      <div className="flex flex-row min-h-screen" onClick={()=>{handleCloseMenu()}}>
+        <DirectoryLeftMenu/>
+        <DirectoryContents/>
         </div>
       </div>
     );
