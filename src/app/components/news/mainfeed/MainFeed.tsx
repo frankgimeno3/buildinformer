@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import MainArticle from './mainfeedcomponents/mainArticle';
+// import MainArticle from './mainfeedcomponents/mainArticle';
 import ArticleMiniature from './mainfeedcomponents/ArticleMiniature';
 
 interface MainFeedProps {
