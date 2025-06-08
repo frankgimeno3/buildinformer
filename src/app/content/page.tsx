@@ -1,6 +1,6 @@
 "use client"
 import { useState } from "react";
-import UnloggedNav from "../components/UnloggedNav";
+import UnloggedNav from "../components/navs/MainNav";
 import Topbanner from "../components/news/TopBanner";
 import Article from "./contentComponents/Article";
 import ArticleRightBox from "./contentComponents/ArticleRightBox";
@@ -15,10 +15,8 @@ export default function Home() {
 }
 
 return (
-  <div className="" >
-      <div className="fixed top-0 left-0 w-full z-50">
-        <UnloggedNav section={section} menuOpen={menuOpen} setMenuOpen={setMenuOpen}/>
-      </div>
+  <div className="flex flex-col" >
+
       <Topbanner/>
       <div className="flex flex-col min-h-screen" onClick={()=>{handleCloseMenu()}}>
         <div className="flex flex-row">

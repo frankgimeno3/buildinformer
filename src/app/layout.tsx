@@ -1,16 +1,9 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import MainNav from "./components/navs/MainNav";
+import FooterSection from "./components/navs/FooterSection";
+import { UIProvider } from "./components/context/UIContext";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
 
 export const metadata: Metadata = {
   title: "BUILDinformer",
@@ -25,9 +18,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        <UIProvider>
+          <main className="min-h-screen max-w-screen bg-gray-100">
+            <MainNav />
+            {children}
+            <FooterSection />
+          </main>
+        </UIProvider>
       </body>
     </html>
   );
