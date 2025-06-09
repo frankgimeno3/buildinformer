@@ -15,8 +15,7 @@ export default function Home() {
 }
 
 return (
-  <div className="flex flex-col" >
-
+<div className='min-h-screen flex flex-col'>
       <Topbanner/>
       <div className="flex flex-col min-h-screen" onClick={()=>{handleCloseMenu()}}>
         <div className="flex flex-row">

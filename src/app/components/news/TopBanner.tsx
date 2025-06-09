@@ -1,18 +1,22 @@
+"use client";
 import React, { FC } from 'react';
+import Image from 'next/image';
 
-interface TopbannerProps {
-  
-}
+interface TopbannerProps {}
 
 const Topbanner: FC<TopbannerProps> = ({ }) => {
   return (
-    <div className='flex flex-row w-full border border-gray-100 h-auto bg-gray-100 mt-18 p-5 
-    cursor-pointer hover:bg-opacity-90'>
-        <div className='bg-white w-full h-36 p-4'>
-            <p>Banner</p>
-        </div>
+    <div className="w-full py-2 bg-white">
+      <div className="relative h-60 w-full bg-white flex items-center justify-center overflow-hidden cursor-pointer">
+        <Image
+          alt="banner"
+          src="/longbanner.webp"
+          fill
+          className="object-contain"
+        />
+      </div>
     </div>
-  ); 
+  );
 };
 
 export default Topbanner;

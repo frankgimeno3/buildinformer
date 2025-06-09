@@ -1,31 +1,24 @@
 "use client"
 import React, { FC, useState } from 'react';
-import UnloggedNav from '../components/navs/MainNav';
 import Topbanner from '../components/news/TopBanner';
-import DirectoryLeftMenu from './directoryComponents/DirectoryLeftMenu';
-import DirectoryContents from './directoryComponents/DirectoryContents';
+import ProductsDirectory from './directoryComponents/ProductsDirectory';
+import CompaniesDirectory from './directoryComponents/CompaniesDirectory';
 
 interface DirectoryProps {
-  
+
 }
 
 const Directory: FC<DirectoryProps> = ({ }) => {
-    const [section] = useState("directory")
-    const [menuOpen, setMenuOpen] = useState(false)
-    const handleCloseMenu = ()=>{
-        setMenuOpen(false)
-    }
+  const [directorySection, setDirectorySection] = useState("companies")
 
-    return (
-      <div className="flex flex-col" >
-      <Topbanner/>
-      <div className="flex flex-row min-h-screen" onClick={()=>{handleCloseMenu()}}>
-        <DirectoryLeftMenu/>
-        <DirectoryContents/>
-        </div>
-      </div>
-    );
- 
+
+  return (
+    <div className='min-h-screen flex flex-col'>
+      {directorySection == "companies" && <CompaniesDirectory setDirectorySection={setDirectorySection} />}
+      {directorySection == "products" && <ProductsDirectory setDirectorySection={setDirectorySection} />}
+    </div>
+  );
+
 };
 
 export default Directory;

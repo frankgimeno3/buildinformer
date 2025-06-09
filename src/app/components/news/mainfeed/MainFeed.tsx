@@ -1,52 +1,54 @@
 import React, { FC } from 'react';
-// import MainArticle from './mainfeedcomponents/mainArticle';
 import ArticleMiniature from './mainfeedcomponents/ArticleMiniature';
+import Hero from '../Hero';
+import ContentBanner from '../ContentBanner';
 
 interface MainFeedProps {
 
 }
 
 const MainFeed: FC<MainFeedProps> = ({ }) => {
+
   return (
-    <div className='flex flex-col min-h-screen flex-3 bg-white'>
-      <div className='flex flex-row px-5 pt-5 justify-between'>
-        <p className='text-gray-600'>News</p>
-        <div className='flex flex-col pr-6 '>
-          <div className='flex flex-row rounded border border-gray-100 justify-between my-2'>
-            <input className='bg-transparent w-full pl-2 text-gray-400 text-xs' placeholder='Search for content here' />
-            <button className='bg-white rounded shadow text-xs px-2 m-1 py-1 hover:text-gray-500 hover:bg-gray-100'>
-              Search</button>
-          </div>
-          <div className='flex flex-row  text-xs'>
-            <button className='bg-gray-100 text-gray-500 hover:bg-gray-300 p-2 ml-2'>Architecture and projects</button>
-            <button className='bg-gray-100 text-gray-500 hover:bg-gray-300 p-2 ml-2'>Interiors and design</button>
-            <button className='bg-gray-100 text-gray-500 hover:bg-gray-300 p-2 ml-2'>Construction and operations</button>
-          </div>
-        </div>
+    <div className='flex flex-col min-h-screen flex-3 bg-white mt-12'>
+      <Hero />
+      <ContentBanner />
+      <p className='px-5 py-3 pt-8 text-3xl text-zinc-600 font-bold'>Newest articles about architectural projects</p>
+      <div className='flex flex-row mx-auto'><ArticleMiniature /><ArticleMiniature /><ArticleMiniature /></div>
+      <div className='flex flex-row mx-auto'><ArticleMiniature /><ArticleMiniature /><ArticleMiniature /></div>
+      <div className='text-center py-8'>
+        <button className='bg-zinc-800 px-5 py-2 rounded hover:bg-zinc-900 hover:shadow cursor-pointer'>
+          Read more articles about architectural projects
+        </button> 
       </div>
-      {/* <MainArticle/> */}
-      <div className='flex flex-col'>
-        <div className='flex flex-row'>
-          <ArticleMiniature />
-          <ArticleMiniature />
-          <ArticleMiniature />
-        </div>
-        <div className='flex flex-row'>
-          <ArticleMiniature />
-          <ArticleMiniature />
-          <ArticleMiniature />
-        </div>
-        <div className='flex flex-row'>
-          <ArticleMiniature />
-          <ArticleMiniature />
-          <ArticleMiniature />
-        </div>
-        <div className='flex flex-row'>
-          <ArticleMiniature />
-          <ArticleMiniature />
-          <ArticleMiniature />
-        </div>
+      <ContentBanner />
+      <p className='px-5 py-3 pt-8 text-3xl text-zinc-600 font-bold'>Newest articles about builders</p>
+      <div className='flex flex-row mx-auto'><ArticleMiniature /><ArticleMiniature /><ArticleMiniature /></div>
+      <div className='flex flex-row mx-auto'><ArticleMiniature /><ArticleMiniature /><ArticleMiniature /></div>
+      <div className='text-center py-8'>
+        <button className='bg-zinc-800 px-5 py-2 rounded hover:bg-zinc-900 hover:shadow cursor-pointer'>
+          Read more articles about builders
+        </button>
       </div>
+            <ContentBanner />
+      <p className='px-5 py-3 pt-8 text-3xl text-zinc-600 font-bold'>Newest articles about contech</p>
+      <div className='flex flex-row mx-auto'><ArticleMiniature /><ArticleMiniature /><ArticleMiniature /></div>
+      <div className='flex flex-row mx-auto'><ArticleMiniature /><ArticleMiniature /><ArticleMiniature /></div>
+      <div className='text-center py-8'>
+        <button className='bg-zinc-800 px-5 py-2 rounded hover:bg-zinc-900 hover:shadow cursor-pointer'>
+          Read more articles about contech
+        </button>
+      </div>
+      <ContentBanner />
+      <p className='px-5 py-3 pt-8 text-3xl text-zinc-600 font-bold'>Newest articles about markets</p>
+      <div className='flex flex-row mx-auto'><ArticleMiniature /><ArticleMiniature /><ArticleMiniature /></div>
+      <div className='flex flex-row mx-auto'><ArticleMiniature /><ArticleMiniature /><ArticleMiniature /></div>
+      <div className='text-center py-8'>
+        <button className='bg-zinc-800 px-5 py-2 rounded hover:bg-zinc-900 hover:shadow cursor-pointer'>
+          Read more articles about markets
+        </button>
+      </div>
+
     </div>
   );
 };

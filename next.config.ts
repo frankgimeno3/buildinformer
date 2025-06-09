@@ -1,7 +1,11 @@
-import type { NextConfig } from "next";
+ 
+ 
+ /** @type {import('next').NextConfig} */
 
-const nextConfig: NextConfig = {
-  /* config options here */
+ const nextConfig = {
+  images: {
+    domains: ['vidrioperfil.com', 'www.vidrioperfil.com', 'picsum.photos'],
+  },
 };
 
 export default nextConfig;
