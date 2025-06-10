@@ -13,12 +13,14 @@ const ArticleMiniature: FC<ArticleMiniatureProps> = ({ }) => {
     return (
         <div className='p-5'>
             <div
-                className='flex flex-col w-96 hover:shadow-xl transition-shadow duration-[1500ms] cursor-pointer'
+                className='flex flex-col w-96 hover:shadow-xl transition-shadow duration-[1500ms] cursor-pointer bg-gray-50/80'
                 onClick={() => {
                     handleRedirection('/content');
                 }}
             >
-
+                <div className='flex flex-row justify-end px-2 pt-2 pb-1 '>
+                <p className='text-right text-gray-400 text-xs'>March 20th 2025</p>
+                </div>
                 <div className='relative w-96 h-80'>
                     <Image
                         alt='articleImage'
