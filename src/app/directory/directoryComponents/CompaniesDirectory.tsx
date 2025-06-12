@@ -28,8 +28,7 @@ const CompaniesDirectory: FC<CompaniesDirectoryProps> = ({ setDirectorySection }
           </div>
         </div>
       </div>
-      <div className='flex flex-row '>
-        <div className='pl-12 w-full flex flex-col pr-5 pt-5'>
+         <div className='pl-12 w-full flex flex-col pr-5 pt-5'>
             <CompanyMiniature />
             <CompanyMiniature />
             <CompanyMiniature />
@@ -37,11 +36,8 @@ const CompaniesDirectory: FC<CompaniesDirectoryProps> = ({ setDirectorySection }
             <CompanyMiniature />
             <CompanyMiniature />
         </div>
-        <div className='w-full max-w-md'>
-          <RightCol />
-        </div>
-      </div>
-    </div>
+        
+     </div>
 
   );
 };
