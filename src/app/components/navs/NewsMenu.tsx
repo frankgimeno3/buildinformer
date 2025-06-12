@@ -40,8 +40,8 @@ const NewsMenu: FC<NewsMenuProps> = ({ isOpen, onNavigate }) => {
                              <p
                     className="text-center mb-4 cursor-pointer px-1 pl-2 font-bold bg-white hover:bg-gray-300 
                     text-zinc-800 rounded-sm text-xl"
-                    onClick={() => onNavigate('/contech')}>
-                    CONTECH NEWS
+                    onClick={() => onNavigate('/tech')}>
+                    TECHNOLOGY 
                 </p>
                             <p
                     className="text-center mb-4 cursor-pointer px-1 pl-2 font-bold bg-white hover:bg-gray-300 
