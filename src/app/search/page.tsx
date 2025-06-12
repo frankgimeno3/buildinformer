@@ -16,6 +16,7 @@ const Search: FC<SearchProps> = ({ }) => {
                 <p>Filter by topic</p>
             </div>
             <p>Aquí deberían aparecer los resultados de búsqueda</p>
+            <p>No results where found (by default)</p>
             <p>Aquí unos buttons </p>
         </div>
     );
