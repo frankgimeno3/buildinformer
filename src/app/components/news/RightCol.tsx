@@ -13,14 +13,14 @@ const RightCol: FC<RightColProps> = () => {
   };
 
   return (
-    <div className='min-h-screen border flex-1 hidden md:block p-5 border-l-gray-50 pt-12'>
-       <div
+<>
+    <div
         className='border border-black rounded shadow bg-white text-gray-400 mb-5  p-7 cursor-pointer hover:bg-gray-50 border border-gray-100'
         onClick={() => handleRedirection('/contact/advertise')}
       >
         <p className='font-bold text-2xl text-gray-500'>Read only the information that interests you</p>
-        <p className='py-3 pl-36 text-right max-w-xs'>Filter by topic or location to see only what you want to read .</p>
-        <p className=' text-left max-w-xs pr-36'>Sign up to create customized filters, and receive alerts when something that interests you is published .</p>
+        <p className='py-3  text-right max-w-xs'>Filter by topic or location to see only what you want to read .</p>
+        <p className=' text-left max-w-xs '>Sign up to create customized filters, and receive alerts when something that interests you is published .</p>
       </div>
       <div
         className='bg-white text-gray-400 mb-2  pl-5 py-1 cursor-pointer hover:bg-gray-50 border border-gray-100'
@@ -61,7 +61,7 @@ const RightCol: FC<RightColProps> = () => {
           className='object-cover ContentBanner'
         />
       </div>
-    </div>
+    </>
   );
 };
 

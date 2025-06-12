@@ -8,10 +8,10 @@ import Topbanner from "./components/news/TopBanner";
 import RightCol from "./components/news/RightCol";
 
 // Configuración de la fuente Oswald
-const oswald = Oswald({ 
+const oswald = Oswald({
   subsets: ['latin'],
-  variable: '--font-oswald', 
-  weight: ['200', '300', '400', '500', '600', '700']  
+  variable: '--font-oswald',
+  weight: ['200', '300', '400', '500', '600', '700']
 });
 
 export const metadata: Metadata = {
@@ -32,11 +32,11 @@ export default function RootLayout({
             <MainNav />
             <div className="flex flex-col px-24">
               <Topbanner />
-              <div className="flex flex-row min-h-screen">
-                <div>
+              <div className="flex flex-row min-h-screen ">
+    <div className='flex flex-col min-h-screen flex-3 bg-white mt-12'>
                   {children}
                 </div>
-                <div className="w-full">
+                <div className='min-h-screen border flex-1 hidden md:block p-5 border-l-gray-50 pt-12 ' >
                   <RightCol />
                 </div>
               </div>

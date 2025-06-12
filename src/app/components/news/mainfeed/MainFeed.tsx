@@ -10,8 +10,7 @@ interface MainFeedProps {
 const MainFeed: FC<MainFeedProps> = ({ }) => {
 
   return (
-    <div className='flex flex-col min-h-screen flex-3 bg-white mt-12'>
-      <Hero />
+<>     <Hero />
       <ContentBanner />
       <p className='px-5 py-3 pt-8 text-3xl text-zinc-600 font-bold'>Newest articles about architectural projects</p>
       <div className='flex flex-row mx-auto'><ArticleMiniature /><ArticleMiniature /><ArticleMiniature /></div>
@@ -49,7 +48,7 @@ const MainFeed: FC<MainFeedProps> = ({ }) => {
         </button>
       </div>
 
-    </div>
+    </>
   );
 };
 
