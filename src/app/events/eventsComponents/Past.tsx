@@ -1,4 +1,5 @@
 import React, { FC } from 'react';
+import EventMiniature from './EventMiniature';
 
 interface PastProps {
   
@@ -6,7 +7,15 @@ interface PastProps {
 
 const Past: FC<PastProps> = ({ }) => {
   return (
-    <div>Past</div>
+    <div className='flex flex-col gap-5'>
+      <EventMiniature/>
+      <EventMiniature/>
+      <EventMiniature/>
+      <EventMiniature/>
+      <EventMiniature/>
+      <EventMiniature/>
+      <EventMiniature/>
+    </div>
   );
 };
 
