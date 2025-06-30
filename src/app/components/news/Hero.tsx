@@ -6,7 +6,7 @@ interface HeroProps { }
 const Hero: FC<HeroProps> = () => {
   return (
     <div className='flex flex-row h-[600px] text-gray-500'>
-      <div className='flex flex-col flex-2/3 p-6 border-r border-b border-gray-200'>
+      <div className='flex flex-col flex-2/3 px-6 pb-6 border-r border-b border-gray-200'>
         <div className="relative w-full aspect-[4/3] overflow-hidden cursor-pointer">
           <Image
             src='https://picsum.photos/530/300/'
