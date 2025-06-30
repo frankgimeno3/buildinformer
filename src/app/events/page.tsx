@@ -23,7 +23,7 @@ const Events: FC<EventsProps> = ({ }) => {
 
       <div className='flex flex-row py-3 gap-3 text-lg  '>
         <button
-          className={`px-2 py-1 rounded shadow ${
+          className={`px-2 py-1 rounded shadow cursor-pointer ${
             selectedEvents === "future" ? "bg-gray-300" : "bg-white"
           } hover:bg-gray-200 text-gray-600`}
           onClick={() => handleChangeSelectedEvent("future")}
@@ -32,7 +32,7 @@ const Events: FC<EventsProps> = ({ }) => {
         </button>
 
         <button
-          className={`px-2 py-1 rounded shadow ${
+          className={`px-2 py-1 rounded shadow cursor-pointer ${
             selectedEvents === "past" ? "bg-gray-300" : "bg-white"
           } hover:bg-gray-200 text-gray-600`}
           onClick={() => handleChangeSelectedEvent("past")}
