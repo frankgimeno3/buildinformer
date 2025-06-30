@@ -5,7 +5,7 @@ import React, { FC } from 'react';
 interface NewsMenuProps {
     isOpen: boolean;
     onNavigate: (path: string) => void;
-    onClose: () => void; // Añadido para cerrar el menú manualmente
+    onClose: () => void; 
 }
 
 const NewsMenu: FC<NewsMenuProps> = ({ isOpen, onNavigate, onClose }) => {
@@ -13,7 +13,7 @@ const NewsMenu: FC<NewsMenuProps> = ({ isOpen, onNavigate, onClose }) => {
 
     const handleNavigation = (path: string) => {
         onNavigate(path);
-        onClose(); // cerrar el menú después de navegar
+        onClose();  
     };
 
     return (
@@ -41,7 +41,7 @@ const NewsMenu: FC<NewsMenuProps> = ({ isOpen, onNavigate, onClose }) => {
                     <p
                         className="text-center mb-4 cursor-pointer px-1 pl-2 font-bold bg-white hover:bg-gray-300 text-zinc-800 rounded-sm text-xl"
                         onClick={() => handleNavigation('/news/tech')}>
-                        TECHNOLOGY
+                        ARCHITECTURAL TECHNOLOGY NEWS
                     </p>
                     <p
                         className="text-center mb-4 cursor-pointer px-1 pl-2 font-bold bg-white hover:bg-gray-300 text-zinc-800 rounded-sm text-xl"
