@@ -19,7 +19,7 @@ const CompaniesDirectory: FC<CompaniesDirectoryProps> = ({ setDirectorySection }
       <div className='flex flex-col bg-gray-700  w-full p-5 pl-12'>
         <div className='flex flex-row items-center justify-between '>
           <p className='pt-2 pb-3 text-5xl '>Companies Directory</p>
-          <button className='bg-white hover:bg-gray-100 text-gray-500 px-3 py-2 rounded shadow cursor-pointer'
+          <button className='bg-white hover:bg-gray-100 text-gray-500 px-3 py-2 rounded shadow cursor-pointer w-56'
           onClick={() => handleChangeDirectorySection("products")}>
             Products Directory
           </button>
