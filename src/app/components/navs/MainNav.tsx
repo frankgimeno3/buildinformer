@@ -2,52 +2,35 @@
 
 import React, { FC, useEffect, useRef, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { Menu } from 'lucide-react';
+// import { Menu } from 'lucide-react';
 import { useUI } from '../context/UIContext';
 import SearchButtonComponent from '../SearchButtonComponent';
 import NewsMenu from './NewsMenu';
-import LoggedMenu from './LoggedMenu'; // Nuevo componente
+import LoggedMenu from './LoggedMenu';
 
 const MainNav: FC = () => {
   const router = useRouter();
-  const { isMenuOpen, setIsMenuOpen, section } = useUI();
-  const [isNewsOpen, setIsNewsOpen] = useState(false);
-  const [isLoggedOpen, setIsLoggedOpen] = useState(false); // NUEVO
+  const { isMenuOpen, isNewsOpen, setIsNewsOpen, isLoggedOpen, setIsLoggedOpen, section} = useUI(); 
+  
   const navRef = useRef<HTMLDivElement | null>(null);
 
   const handleNavigate = (path: string) => {
     router.push(path);
-    setIsMenuOpen(false);
-    setIsNewsOpen(false);
-    setIsLoggedOpen(false);
   };
 
-  useEffect(() => {
-    const closeMenus = (e: MouseEvent) => {
-      if (
-        (isNewsOpen || isLoggedOpen) &&
-        navRef.current &&
-        !navRef.current.contains(e.target as Node)
-      ) {
-        setIsNewsOpen(false);
-        setIsLoggedOpen(false);
-      }
-    };
-    document.addEventListener('mousedown', closeMenus);
-    return () => document.removeEventListener('mousedown', closeMenus);
-  }, [isNewsOpen, isLoggedOpen]);
-
-  const navItems = [
-    { label: 'News', active: isNewsOpen, onClick: () => setIsNewsOpen(!isNewsOpen) },
-    { label: 'Events', active: section === 'events', path: '/events' },
-    { label: 'Directory', active: section === 'directory', path: '/directory' },
-  ];
+  const handleCloseMenus = () => {
+    if(isNewsOpen==true || isLoggedOpen==true){
+    setIsNewsOpen(false);
+    setIsLoggedOpen(false);}
+  };
+ 
 
   return (
     <>
       <nav
         ref={navRef}
         className="flex justify-between items-center w-full px-5 py-6 sm:px-24 bg-zinc-800 text-white relative z-50"
+        onClick={handleCloseMenus}
       >
         <div className="flex flex-col cursor-pointer" onClick={() => handleNavigate('/')}>
           <div className="flex items-center text-xl md:text-5xl">
@@ -66,22 +49,33 @@ const MainNav: FC = () => {
             <SearchButtonComponent />
           </div>
 
-          <button className="sm:hidden text-white" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+          {/* <button className="sm:hidden text-white" onClick={() => setIsMenuOpen(!isMenuOpen)}>
             <Menu size={30} />
-          </button>
+          </button> */}
 
           <div
             className={`${isMenuOpen ? 'flex' : 'hidden'} sm:flex absolute sm:static top-7 left-0 w-full sm:w-auto flex-col sm:flex-row bg-gray-950 sm:bg-transparent items-center text-lg gap-6 pl-24`}
           >
-            {navItems.map(({ label, active, path, onClick }) => (
-              <div
-                key={label}
-                onClick={onClick || (() => handleNavigate(path!))}
-                className={`pt-6 pb-5 cursor-pointer text-center ${active ? 'text-white font-bold' : 'opacity-50 hover:opacity-100'}`}
-              >
-                <p>{label}</p>
-              </div>
-            ))}
+            <div
+              onClick={() => setIsNewsOpen(!isNewsOpen)}
+              className={`pt-6 pb-5 cursor-pointer text-center ${isNewsOpen ? 'text-white font-bold' : 'opacity-50 hover:opacity-100'}`}
+            >
+              <p>News</p>
+            </div>
+
+            <div
+              onClick={() => handleNavigate('/events')}
+              className={`pt-6 pb-5 cursor-pointer text-center ${section === 'events' ? 'text-white font-bold' : 'opacity-50 hover:opacity-100'}`}
+            >
+              <p>Events</p>
+            </div>
+
+            <div
+              onClick={() => handleNavigate('/directory')}
+              className={`pt-6 pb-5 cursor-pointer text-center ${section === 'directory' ? 'text-white font-bold' : 'opacity-50 hover:opacity-100'}`}
+            >
+              <p>Directory</p>
+            </div>
 
             <div
               onClick={() => handleNavigate('/access')}
@@ -90,7 +84,6 @@ const MainNav: FC = () => {
               <p>Access</p>
             </div>
 
-            {/* Botón Hamburguesa blanco para LoggedMenu */}
             <button
               onClick={() => setIsLoggedOpen(!isLoggedOpen)}
               className="mt-6 mb-5 flex flex-col justify-between items-center w-10 h-8 p-2 bg-white rounded cursor-pointer"
@@ -103,8 +96,22 @@ const MainNav: FC = () => {
         </div>
       </nav>
 
-      <NewsMenu isOpen={isNewsOpen} onNavigate={handleNavigate} />
-      <LoggedMenu isOpen={isLoggedOpen} onNavigate={handleNavigate} />
+      <NewsMenu
+        isOpen={isNewsOpen}
+        onNavigate={(path) => {
+          handleNavigate(path);
+          setIsNewsOpen(false);
+        }}
+        onClose={() => setIsNewsOpen(false)}
+      />
+
+      <LoggedMenu
+        isOpen={isLoggedOpen}
+        onNavigate={(path) => {
+          handleNavigate(path);
+          setIsLoggedOpen(false);
+        }}
+      />
     </>
   );
 };
