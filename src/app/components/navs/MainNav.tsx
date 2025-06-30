@@ -6,28 +6,36 @@ import { Menu } from 'lucide-react';
 import { useUI } from '../context/UIContext';
 import SearchButtonComponent from '../SearchButtonComponent';
 import NewsMenu from './NewsMenu';
+import LoggedMenu from './LoggedMenu'; // Nuevo componente
 
 const MainNav: FC = () => {
   const router = useRouter();
   const { isMenuOpen, setIsMenuOpen, section } = useUI();
   const [isNewsOpen, setIsNewsOpen] = useState(false);
+  const [isLoggedOpen, setIsLoggedOpen] = useState(false); // NUEVO
   const navRef = useRef<HTMLDivElement | null>(null);
 
   const handleNavigate = (path: string) => {
     router.push(path);
     setIsMenuOpen(false);
     setIsNewsOpen(false);
+    setIsLoggedOpen(false);
   };
 
   useEffect(() => {
     const closeMenus = (e: MouseEvent) => {
-      if (isNewsOpen && navRef.current && navRef.current.contains(e.target as Node)) {
+      if (
+        (isNewsOpen || isLoggedOpen) &&
+        navRef.current &&
+        !navRef.current.contains(e.target as Node)
+      ) {
         setIsNewsOpen(false);
+        setIsLoggedOpen(false);
       }
     };
     document.addEventListener('mousedown', closeMenus);
     return () => document.removeEventListener('mousedown', closeMenus);
-  }, [isNewsOpen]);
+  }, [isNewsOpen, isLoggedOpen]);
 
   const navItems = [
     { label: 'News', active: isNewsOpen, onClick: () => setIsNewsOpen(!isNewsOpen) },
@@ -69,8 +77,7 @@ const MainNav: FC = () => {
               <div
                 key={label}
                 onClick={onClick || (() => handleNavigate(path!))}
-                className={`pt-6 pb-5 cursor-pointer text-center ${active ? 'text-white font-bold' : 'opacity-50 hover:opacity-100'
-                  }`}
+                className={`pt-6 pb-5 cursor-pointer text-center ${active ? 'text-white font-bold' : 'opacity-50 hover:opacity-100'}`}
               >
                 <p>{label}</p>
               </div>
@@ -78,16 +85,26 @@ const MainNav: FC = () => {
 
             <div
               onClick={() => handleNavigate('/access')}
-              className={`mt-6 mb-5 px-5 py-1 rounded text-md text-zinc-800 bg-white cursor-pointer ${section === 'access' ? 'opacity-100 font-bold' : 'opacity-80 hover:opacity-100'
-                }`}
+              className={`mt-6 mb-5 px-5 py-1 rounded text-md text-zinc-800 bg-white cursor-pointer ${section === 'access' ? 'opacity-100 font-bold' : 'opacity-80 hover:opacity-100'}`}
             >
               <p>Access</p>
             </div>
+
+            {/* Botón Hamburguesa blanco para LoggedMenu */}
+            <button
+              onClick={() => setIsLoggedOpen(!isLoggedOpen)}
+              className="mt-6 mb-5 flex flex-col justify-between items-center w-10 h-8 p-2 bg-white rounded cursor-pointer"
+            >
+              <span className="block w-full h-0.5 bg-gray-600"></span>
+              <span className="block w-full h-0.5 bg-gray-600"></span>
+              <span className="block w-full h-0.5 bg-gray-600"></span>
+            </button>
           </div>
         </div>
       </nav>
 
       <NewsMenu isOpen={isNewsOpen} onNavigate={handleNavigate} />
+      <LoggedMenu isOpen={isLoggedOpen} onNavigate={handleNavigate} />
     </>
   );
 };

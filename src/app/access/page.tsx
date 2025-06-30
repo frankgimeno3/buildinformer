@@ -1,27 +1,48 @@
 "use client"
 import React, { FC, useState } from 'react';
-import UnloggedNav from '../components/navs/MainNav';
-
+import LoginForm from './accessComponents/LoginForm';
+import SignupForm from './accessComponents/SignupForm';
+import { useRouter } from 'next/navigation';
 interface AccessProps {
-  
 }
 
 const Access: FC<AccessProps> = ({ }) => {
-    const [section] = useState("Access")
-    const [menuOpen, setMenuOpen] = useState(false)
-    const handleCloseMenu = ()=>{
-        setMenuOpen(false)
+    const router = useRouter();
+    const [section, setSection] = useState("login")
+    const handleRedirection = (params: string) => {
+        router.push(params);
     }
 
     return (
-  
-        <div className="flex flex-col min-h-screen bg-white text-gray-500 pt-96" onClick={()=>{handleCloseMenu()}}>
-         <p>Access</p>
-         <p>Log in</p>
-         <p>Sign Up</p>
-         <p>Who are we?</p>
+        <div className="flex flex-col min-h-screen bg-white text-gray-500 p-12"  >
+        
+            <p className='text-5xl font-bold'>Access</p>
+            <p> Configure your prefferences to see only information that is relevant to you</p>
+            <p> Create a profile to connect with other users and companies</p>
+            <p>Manage your profile, suscriptions and preferences</p>
+
+            <p>Create an account or log in to start!</p>
+            <div className='flex flex-row gap-4'>
+                <button className='px-2 py-1 rounded bg-gray-700 cursor-pointer' onClick={()=>{setSection("login")}}>Log in</button>
+                <button className='px-2 py-1 rounded bg-gray-700 cursor-pointer' onClick={()=>{setSection("signup")}}>Sign Up</button>
+            </div>
+            <div className='p-12'>
+
+            {section === "login" ? 
+                <>
+                    <p className='text-2xl font-bold'>Log in</p>
+                    <LoginForm />
+                </> : <>
+                    <p className='text-2xl font-bold'>Sign Up</p>
+                    <SignupForm />
+                </> }
+            </div>
+
+            <p>Do you want to know more about us?</p>
+            <button className='px-2 py-1 rounded bg-gray-700' onClick={()=>{handleRedirection("/about")}}>About us</button>
+
         </div>
-     );
+    );
 };
 
 export default Access;
